@@ -1,5 +1,4 @@
 #include "domain/message.hpp"
-#include <string>
 
 namespace fast_chat {
 
