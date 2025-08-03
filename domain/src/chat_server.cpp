@@ -5,12 +5,17 @@
 
 #include <assert.h>
 #include <memory>
+#include <ranges>
 #include <string>
 
 namespace fast_chat {
 
 ChatServer::ChatServer(std::shared_ptr<IPasswordHasher> hasher)
-    : hasher(std::move(hasher)) {}
+    : hasher(std::move(hasher)) {
+    if (!this->hasher) {
+        throw std::runtime_error("Chat server requires a password hasher");
+    }
+}
 
 std::shared_ptr<User> ChatServer::register_user(const std::string& username,
                                                 const std::string& password) {
@@ -55,10 +60,21 @@ void ChatServer::logout(const std::string& username) {
         return; // log user is offline
     }
 
-    std::remove_if(online_users.begin(), online_users.end(),
-                   [&username](const std::shared_ptr<User>& user) {
-                       return user->get_username() == username;
-                   });
+    auto rooms_to_clear =
+        rooms | std::views::filter([username](std::shared_ptr<ChatRoom> room) {
+            return room->has_user(username);
+        });
+
+    for (auto room : rooms_to_clear) {
+        room->leave(username);
+    }
+
+    online_users.erase(
+        std::remove_if(online_users.begin(), online_users.end(),
+                       [&username](const std::shared_ptr<User>& user) {
+                           return user->get_username() == username;
+                       }),
+        online_users.end());
 }
 
 std::shared_ptr<ChatRoom> ChatServer::find_room(const std::string& name) const {
@@ -86,13 +102,26 @@ std::shared_ptr<ChatRoom> ChatServer::create_room(const std::string& name) {
 }
 
 bool ChatServer::user_exists(const std::string& username) const {
+    assert(!username.empty());
+
     return std::any_of(users.begin(), users.end(),
                        [&username](const std::shared_ptr<User>& user) {
                            return user->get_username() == username;
                        });
 }
 
+bool ChatServer::is_user_online(const std::string& username) const {
+    assert(!username.empty());
+
+    return std::any_of(online_users.begin(), online_users.end(),
+                       [&username](const std::shared_ptr<User>& user) {
+                           return user->get_username() == username;
+                       });
+}
+
 std::shared_ptr<User> ChatServer::find_user(const std::string& username) const {
+    assert(!username.empty());
+
     return *std::find_if(users.begin(), users.end(),
                          [&username](const std::shared_ptr<User>& user) {
                              return user->get_username() == username;

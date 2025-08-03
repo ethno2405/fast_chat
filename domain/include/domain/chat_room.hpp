@@ -16,11 +16,10 @@ class ChatRoom {
     void join(std::shared_ptr<User> user);
     void leave(std::string username);
     const Users& get_users() const;
+    bool has_user(const std::string& username) const;
 
   private:
     std::string name;
     Users users;
-
-    bool has_user(const std::string& username) const;
 };
 } // namespace fast_chat
