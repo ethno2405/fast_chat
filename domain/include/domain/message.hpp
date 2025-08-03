@@ -9,9 +9,9 @@ class Message {
   public:
     Message(std::string from, std::string content);
 
-    const std::string& from() const;
-    const std::string& content() const;
-    std::chrono::system_clock::time_point timestamp() const;
+    const std::string& get_from() const;
+    const std::string& get_content() const;
+    std::chrono::system_clock::time_point get_timestamp() const;
 
   private:
     std::string from;

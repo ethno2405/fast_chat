@@ -11,10 +11,10 @@ class User;
 class ChatRoom {
   public:
     ChatRoom(std::string name);
-    const std::string& name() const;
+    const std::string& get_name() const;
     void join(std::shared_ptr<User> user);
     void leave(std::string username);
-    const std::vector<std::shared_ptr<User>>& users() const;
+    const std::vector<std::shared_ptr<User>>& get_users() const;
 
   private:
     std::string name;
