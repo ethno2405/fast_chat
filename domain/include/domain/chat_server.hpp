@@ -1,14 +1,15 @@
 #pragma once
 
-#include "chat_room.hpp"
-#include "user.hpp"
-
 #include <memory>
 #include <optional>
 #include <string>
 #include <vector>
 
 namespace fast_chat {
+
+class User;
+class ChatRoom;
+
 class ChatServer {
   public:
     std::shared_ptr<User> register_user(const std::string& username,

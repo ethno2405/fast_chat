@@ -4,7 +4,7 @@
 namespace fast_chat {
 class User {
   public:
-    User(std::string username, std::string password);
+    User(std::string username, std::string password_hash);
     const std::string& username() const;
     bool check_password(const std::string& password) const;
 
