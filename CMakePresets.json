@@ -21,7 +21,6 @@
             "hidden": false,
             "generator": "Visual Studio 17 2022",
             "description": "Use vcpkg toolchain (Windows)",
-            "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}\\scripts\\buildsystems\\vcpkg.cmake"
             }
