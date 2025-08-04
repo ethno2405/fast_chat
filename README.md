@@ -32,7 +32,7 @@ This project uses CMake presets for simplified configuration and building. The a
     ```sh
     git clone git@github.com:microsoft/vcpkg.git
     cd vcpkg
-    .\bootstrap-vcpkg.sh
+    ./bootstrap-vcpkg.sh
     ```
 
 2. **Configure the project**:
