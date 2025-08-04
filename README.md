@@ -14,27 +14,31 @@ fast_chat is a simple modular chat server implemented in C++20. It features user
 
 ## Prerequisites
 
-- C++20 compatible compiler (e.g., g++ 10+)
+- C++20 compatible compiler (e.g., g++ 10+ for Linux, MSVC for Windows)
 - CMake 3.19+
-- [Boost](https://www.boost.org/) (system, thread, json)
-- [libsodium](https://libsodium.gitbook.io/doc/)
-- [vcpkg](https://github.com/microsoft/vcpkg) (recommended for dependency management)
+- [vcpkg](https://github.com/microsoft/vcpkg)
 
 ## Building
 
-1. **Install dependencies** (recommended via vcpkg):
+This project uses CMake presets for simplified configuration and building. The available presets are defined in `CMakePresets.json`:
+
+- **with-vcpkg**: Uses the "Unix Makefiles" generator and the vcpkg toolchain for Linux and macOS.
+- **with-vcpkg-win**: Uses the "Visual Studio 17 2022" generator and the vcpkg toolchain for Windows.
+
+### Linux
+
+1. **Install vcpkg**:
 
     ```sh
-    git clone https://github.com/microsoft/vcpkg.git
+    git clone git@github.com:microsoft/vcpkg.git
     cd vcpkg
-    ./bootstrap-vcpkg.sh
-    ./vcpkg install boost-system boost-thread boost-json libsodium
+    .\bootstrap-vcpkg.sh
     ```
 
-2. **Configure the project** (from the project root directory):
+2. **Configure the project**:
 
     ```sh
-    cmake --preset with-vcpkg
+    cmake --preset=with-vcpkg
     ```
 
 3. **Build the project**:
@@ -49,12 +53,11 @@ fast_chat is a simple modular chat server implemented in C++20. It features user
     ./build/http-api/http_api
     ```
 
-## Project Structure
+### Windows (Visual Studio 2022)
 
-- `domain/` - Core chat logic and data structures
-- `http-api/` - Main application and API integration
-- `.vscode/` - Editor configuration for VS Code
-- `CMakeLists.txt` - Top-level build configuration
+Visual Studio 2022 supports `vcpkg` manifest mode, so you can open the project directory directly. `File > Open > CMake > CMakeLists.txt`. 
+The `vcpkg.json` file will be automatically detected.
+
 
 ## License
 
