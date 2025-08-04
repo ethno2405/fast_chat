@@ -28,10 +28,10 @@ void ChatRoom::leave(std::string username) {
         return; // log user is not in the chat room
     }
 
-    users.erase(std::remove_if(users.begin(), users.end(),
-                               [&username](const std::shared_ptr<User>& user) {
-                                   return user->get_username() == username;
-                               }),
+    users.erase(std::find_if(users.begin(), users.end(),
+                             [&username](const std::shared_ptr<User>& user) {
+                                 return user->get_username() == username;
+                             }),
                 users.end()); // log user left the chat room
 }
 

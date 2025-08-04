@@ -70,10 +70,10 @@ void ChatServer::logout(const std::string& username) {
     }
 
     online_users.erase(
-        std::remove_if(online_users.begin(), online_users.end(),
-                       [&username](const std::shared_ptr<User>& user) {
-                           return user->get_username() == username;
-                       }),
+        std::find_if(online_users.begin(), online_users.end(),
+                     [&username](const std::shared_ptr<User>& user) {
+                         return user->get_username() == username;
+                     }),
         online_users.end());
 }
 
