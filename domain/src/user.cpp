@@ -1,5 +1,6 @@
 #include "domain/user.hpp"
 #include "domain/password_hasher.hpp"
+#include <stdexcept>
 
 namespace fast_chat {
 User::User(std::string username, std::string password_hash)

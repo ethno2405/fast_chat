@@ -42,7 +42,7 @@
 
 build/
 
-#CMake
+# CMake
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -55,3 +55,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
+
+# Visual Studio
+.vs/
+vcpkg_installed/

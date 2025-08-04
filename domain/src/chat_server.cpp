@@ -7,6 +7,8 @@
 #include <memory>
 #include <ranges>
 #include <string>
+#include <stdexcept>
+#include <algorithm>
 
 namespace fast_chat {
 
