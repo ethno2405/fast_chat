@@ -3,12 +3,12 @@
 #include "domain/password_hasher.hpp"
 #include "domain/user.hpp"
 
+#include <algorithm>
 #include <assert.h>
 #include <memory>
 #include <ranges>
-#include <string>
 #include <stdexcept>
-#include <algorithm>
+#include <string>
 
 namespace fast_chat {
 

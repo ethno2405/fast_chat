@@ -1,11 +1,11 @@
 {
-  "name": "fast-chat",
-  "version": "0.0.1",
-  "builtin-baseline": "903956eff7cb94774a9e805ff573c000afc43e3e",
-  "dependencies": [
-    "boost-system",
-    "boost-thread",
-    "boost-json",
-    "libsodium"
-  ]
+    "name": "fast-chat",
+    "version": "0.0.1",
+    "builtin-baseline": "903956eff7cb94774a9e805ff573c000afc43e3e",
+    "dependencies": [
+        "boost-system",
+        "boost-thread",
+        "boost-json",
+        "libsodium"
+    ]
 }

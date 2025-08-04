@@ -1,8 +1,8 @@
 #include "domain/chat_room.hpp"
 #include "domain/user.hpp"
+#include <algorithm>
 #include <assert.h>
 #include <stdexcept>
-#include <algorithm>
 
 namespace fast_chat {
 
