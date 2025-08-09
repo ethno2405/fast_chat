@@ -38,6 +38,7 @@ This project uses CMake presets for simplified configuration and building. The a
 2. **Configure the project**:
 
     ```sh
+    export VCPKG_ROOT=(your vcpkg dir path)
     cmake --preset=(linux|win)-x64-(debug|release)
     # cmake --preset=linux-x64-debug
     # cmake --preset=win-x64-release

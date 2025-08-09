@@ -8,10 +8,14 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/http-api/http_api",
-            "args": [],
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [
+                "-p",
+                "42069"
+            ],
+            "cwd": "${command:cmake.launchTargetDirectory}",
+            "preLaunchTask": "CMake: build",
             "stopAtEntry": true,
-            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

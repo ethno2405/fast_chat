@@ -59,13 +59,13 @@
         {
             "name": "linux-x64-debug",
             "configurePreset": "linux-x64-debug",
-            "jobs": 8,
+            "configuration": "Debug",
             "verbose": true
         },
         {
             "name": "linux-x64-release",
             "configurePreset": "linux-x64-release",
-            "jobs": 8
+            "configuration": "Release"
         },
         {
             "name": "win-x64-debug",
