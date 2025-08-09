@@ -65,6 +65,7 @@ int main(int argc, char* argv[])
     drogon::app()
         .setLogLevel(trantor::Logger::kDebug)
         .addListener("0.0.0.0", port)
+        .setUploadPath("/tmp/fast-chat/uploads")
         .setThreadNum(0)
         .registerHandler(
             "/ping",
