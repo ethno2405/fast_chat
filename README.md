@@ -47,9 +47,9 @@ This project uses CMake presets for simplified configuration and building. The a
 3. **Build the project**:
 
     ```sh
-    cmake --build build --preset (linux|win)-x64-(debug|release)
-    # cmake --build build --preset linux-x64-debug
-    # cmake --build build --preset win-x64-release
+    cmake --build --preset (linux|win)-x64-(debug|release)
+    # cmake --build --preset linux-x64-debug
+    # cmake --build --preset win-x64-release
     ```
 
 4. **Run the server**:
