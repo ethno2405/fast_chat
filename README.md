@@ -38,19 +38,25 @@ This project uses CMake presets for simplified configuration and building. The a
 2. **Configure the project**:
 
     ```sh
-    cmake --preset=with-vcpkg
+    cmake --preset=(linux|win)-x64-(debug|release)
+    # cmake --preset=linux-x64-debug
+    # cmake --preset=win-x64-release
     ```
 
 3. **Build the project**:
 
     ```sh
-    cmake --build build
+    cmake --build build --preset (linux|win)-x64-(debug|release)
+    # cmake --build build --preset linux-x64-debug
+    # cmake --build build --preset win-x64-release
     ```
 
 4. **Run the server**:
 
     ```sh
-    ./build/http-api/http_api
+    ./build/(Debug|Release)/http_api
+    # ./build/Debug/http_api
+    # ./build/Release/http_api
     ```
 
 ### Windows (Visual Studio 2022)
