@@ -3,8 +3,11 @@
 #include <iostream>
 
 #include "Sha512PasswordHasher.hpp"
+#include "console_message_notifier.hpp"
 #include "domain/chat_server.hpp"
 #include "domain/user.hpp"
+
+void print_users_in_room(const fast_chat::ChatRoom& room);
 
 int main()
 {
@@ -19,32 +22,39 @@ int main()
     auto bob = server->register_user("bob", "123456");
     auto john = server->register_user("john", "123qwe");
 
-    auto room = server->create_room("general");
+    auto notifier = std::make_shared<fast_chat::api::ConsoleMessageNotifier>();
+    auto general_room = server->create_room("general", notifier);
+    auto teams_room = server->create_room("teams", notifier);
 
     bob = server->login("bob", "123456");
     john = server->login("john", "123qwe");
 
-    room->join(bob);
-    room->join(john);
+    general_room->join(bob);
+    general_room->join(john);
+    teams_room->join(bob);
 
-    for (auto u : room->get_users()) {
-        std::cout << "User " << u->get_username() << " in room " << room->get_name()
-            << std::endl;
-    }
+    print_users_in_room(*general_room);
+    print_users_in_room(*teams_room);
 
-    room->leave("bob");
-    std::cout << std::endl;
+    general_room->leave("bob");
 
-    for (auto& u : room->get_users()) {
-        std::cout << "User " << u->get_username() << " in room " << room->get_name()
-            << std::endl;
-    }
+    print_users_in_room(*general_room);
+    print_users_in_room(*teams_room);
 
     server->logout("bob");
     server->logout("john");
 
-    std::cout << "Users in room " << room->get_name() << ": "
-        << room->get_users().size() << std::endl;
+    print_users_in_room(*general_room);
+    print_users_in_room(*teams_room);
 
     std::cout << "End!" << std::endl;
+}
+
+void print_users_in_room(const fast_chat::ChatRoom& room)
+{
+    std::cout << "Users in room " << room.get_name() << ":" << std::endl;
+    for (const auto& user : room.get_users()) {
+        std::cout << user->get_username() << std::endl;
+    }
+    std::cout << std::endl;
 }
