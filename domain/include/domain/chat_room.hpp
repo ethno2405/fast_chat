@@ -4,17 +4,20 @@
 #include <string>
 #include <vector>
 
-namespace fast_chat {
+namespace fast_chat
+{
 
-    class Message;
-    class User;
-    class IMessageNotifier;
+class Message;
+class User;
+class IMessageNotifier;
 
-    typedef std::vector<std::shared_ptr<User>> Users;
+typedef std::vector<std::shared_ptr<User>> Users;
 
-    class ChatRoom {
+class ChatRoom
+{
     public:
-        ChatRoom(std::string name, std::shared_ptr<IMessageNotifier> message_notifier);
+        ChatRoom(std::string name,
+                 std::shared_ptr<IMessageNotifier> message_notifier);
         const std::string& get_name() const;
         void join(std::shared_ptr<User> user);
         void leave(std::string username);
@@ -28,5 +31,5 @@ namespace fast_chat {
         Users users;
         std::vector<std::shared_ptr<Message>> messages;
         std::shared_ptr<IMessageNotifier> message_notifier;
-    };
+};
 } // namespace fast_chat

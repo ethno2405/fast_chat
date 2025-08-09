@@ -11,7 +11,8 @@ void print_users_in_room(const fast_chat::ChatRoom& room);
 
 int main()
 {
-    if (sodium_init() < 0) {
+    if (sodium_init() < 0)
+    {
         return 1;
     }
 
@@ -53,7 +54,8 @@ int main()
 void print_users_in_room(const fast_chat::ChatRoom& room)
 {
     std::cout << "Users in room " << room.get_name() << ":" << std::endl;
-    for (const auto& user : room.get_users()) {
+    for (const auto& user : room.get_users())
+    {
         std::cout << user->get_username() << std::endl;
     }
     std::cout << std::endl;

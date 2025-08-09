@@ -3,9 +3,10 @@
 #include <chrono>
 #include <string>
 
-namespace fast_chat {
-    class Message {
-
+namespace fast_chat
+{
+class Message
+{
     public:
         Message(std::string from, std::string content);
 
@@ -17,6 +18,6 @@ namespace fast_chat {
         std::string from;
         std::string content;
         std::chrono::system_clock::time_point timestamp;
-    };
+};
 
 } // namespace fast_chat
