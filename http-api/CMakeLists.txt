@@ -1,5 +1,5 @@
-find_package(Boost 1.88 REQUIRED COMPONENTS system thread json)
 find_package(unofficial-sodium CONFIG REQUIRED)
+find_package(drogon 1.9.11 REQUIRED)
 
 file(GLOB HTTP_API_SOURCES src/*.cpp)
 add_executable(http_api ${HTTP_API_SOURCES})
@@ -15,14 +15,11 @@ set_target_properties(http_api PROPERTIES
 target_link_libraries(http_api
     PRIVATE
     domain
-    Boost::system 
-    Boost::thread
-    Boost::json
+    Drogon::Drogon
     unofficial-sodium::sodium
 )
 
 target_include_directories(http_api 
     PRIVATE 
-    ${Boost_INCLUDE_DIRS}
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )

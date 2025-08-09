@@ -14,17 +14,17 @@ public:
     void notify_message_posted(const Message& message) override
     {
         std::cout << message.get_from() << "': " << message.get_content()
-                  << std::endl;
+                  << '\n';
     }
 
     void notify_user_joined(const User& user) override
     {
-        std::cout << user.get_username() << " joined the room" << std::endl;
+        std::cout << user.get_username() << " joined the room\n";
     }
 
     void notify_user_left(const User& user) override
     {
-        std::cout << user.get_username() << " left the room" << std::endl;
+        std::cout << user.get_username() << " left the room\n";
     }
 };
 } // namespace fast_chat::api
