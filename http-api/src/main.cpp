@@ -2,10 +2,10 @@
 
 #include <iostream>
 
-#include "Sha512PasswordHasher.hpp"
 #include "console_message_notifier.hpp"
 #include "domain/chat_server.hpp"
 #include "domain/user.hpp"
+#include "sha512_password_hasher.hpp"
 
 void print_users_in_room(const fast_chat::ChatRoom& room);
 

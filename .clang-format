@@ -5,4 +5,4 @@ TabWidth: 4
 ColumnLimit: 80
 SortIncludes: true
 PointerAlignment: Left
-IndentAccessModifiers: true
+AccessModifierOffset: -4
